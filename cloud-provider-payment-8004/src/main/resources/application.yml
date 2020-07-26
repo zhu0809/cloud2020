@@ -1,0 +1,20 @@
+server:
+  port: 8004
+spring:
+  application:
+    # 服务别名---注册zookeeper到注册中心的名称
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      # 默认localhost:2181
+      connect-string: 122.51.89.155:2181
+
+
+  # 数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 数据库操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver # 数据库驱动
+    #url: jdbc:mysql://192.168.221.129:3306/demo2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root

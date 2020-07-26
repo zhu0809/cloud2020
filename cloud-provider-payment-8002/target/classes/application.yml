@@ -1,0 +1,30 @@
+server:
+  port: 8002 # 端口号
+
+spring:
+  # 应用名称
+  application:
+    name: payment-service # 服务名称
+  # 数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 数据库操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver # 数据库驱动
+    #url: jdbc:mysql://192.168.221.129:3306/demo2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+            defaultZone: http://localhost:7001/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: paymennt8002
+    prefer-ip-address: true
+mybatis:
+  mapperLocations: classpath:mapper/*.xml #mapper文件
+  type-aliases-package: com.test.cloud.entity  #所有entity别名所在包
+
+

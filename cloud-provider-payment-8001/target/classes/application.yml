@@ -1,0 +1,34 @@
+server:
+  port: 8001 # 端口号
+
+spring:
+  # 应用名称
+  application:
+    name: payment-service # 服务名称
+  # 数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 数据库操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver # 数据库驱动
+    #url: jdbc:mysql://192.168.221.129:3306/demo2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+      # defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: paymennt8001
+    prefer-ip-address: true
+    #     eureka客户端向注册中心发送心跳的间隔 默认时间是30s
+    lease-renewal-interval-in-seconds: 1
+    #  eureka 服务端在收到最后一次心跳后的等待时间，默认为90秒，超时将踢出服务
+    lease-expiration-duration-in-seconds: 2
+mybatis:
+  mapperLocations: classpath:mapper/*.xml #mapper文件
+  type-aliases-package: com.test.cloud.entity  #所有entity别名所在包
+
+
