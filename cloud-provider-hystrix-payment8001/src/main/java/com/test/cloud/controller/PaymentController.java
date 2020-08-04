@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @create 2020/3/6 22:30
  **/
 @RestController
-@Slf4j
+
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
@@ -32,7 +32,6 @@ public class PaymentController {
     @GetMapping("/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id) {
         String result = paymentService.paymentInfo_OK(id);
-        log.info("*****result:" + result);
         return result;
     }
 
@@ -45,7 +44,6 @@ public class PaymentController {
     @GetMapping("/payment/hystrix/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
         String s = paymentService.paymentInfo_TimeOut(id);
-        log.info("*****result:" + s);
         return s;
 
     }
@@ -55,7 +53,6 @@ public class PaymentController {
     public String circuit(@PathVariable("id") Long id) {
 
         String s = paymentService.fallbackMethod_circuit(id);
-        log.info(s);
         return s;
     }
 }

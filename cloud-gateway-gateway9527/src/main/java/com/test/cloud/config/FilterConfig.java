@@ -12,16 +12,14 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-@Slf4j
+
 public class FilterConfig implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.info("进入filter");
         String username = exchange.getRequest().getQueryParams().getFirst("username");
         if (StringUtils.isBlank(username)) {
 
             exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
-            log.info("username  is blank");
 
             return exchange.getResponse().setComplete();
 
